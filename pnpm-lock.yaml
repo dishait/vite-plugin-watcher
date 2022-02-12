@@ -27,11 +27,13 @@ importers:
       '@vitejs/plugin-vue': ^2.2.0
       vite: ^2.8.0
       vite-plugin-inspect: ^0.3.14
+      vite-plugin-watcher: workspace:*
       vue: ^3.2.30
     devDependencies:
       '@vitejs/plugin-vue': 2.2.0_vite@2.8.0+vue@3.2.30
       vite: 2.8.0
       vite-plugin-inspect: 0.3.14_vite@2.8.0
+      vite-plugin-watcher: link:../..
       vue: 3.2.30
 
 packages:

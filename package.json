@@ -1,13 +1,13 @@
 {
   "version": "0.0.1",
-  "name": "vite-plugin-name",
-  "description": "开箱即用的 vite 插件模板",
+  "name": "vite-plugin-watcher",
+  "description": "vite 文件监听插件 | file watcher plugin for vite",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/name/repo.git"
+    "url": "git+https://github.com/dishait/vite-plugin-watcher.git"
   },
   "exports": {
     "./*": "./*",
@@ -41,13 +41,13 @@
     "template"
   ],
   "author": {
-    "name": "name",
-    "email": "xx@xx.com",
-    "url": "https://github.com/name"
+    "name": "markthree",
+    "email": "1801982702@qq.com",
+    "url": "https://github.com/markthree"
   },
   "bugs": {
-    "email": "xx@xx.com",
-    "url": "https://github.com/name/repo/issues"
+    "email": "1801982702@qq.com",
+    "url": "https://github.com/dishait/vite-plugin-watcher/issues"
   },
   "license": "MIT",
   "devDependencies": {

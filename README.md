@@ -1,76 +1,75 @@
-# vite-plugin-template
+# vite-plugin-watcher
 
-开箱即用的 vite 插件模板
+`vite` 的文件监听插件
+
+<br />
+
+## 动机 🐇
+
+在开发过程中，我们可能需要对 `vite` 项目内的进行一些文件监听。但 `vite` 原生用户配置的文件监听无法进行细粒度的文件监听。
 
 <br />
 
-## Features 🦖
+## 使用 🦕
 
-- pnpm 的
-- `vitest` 测试
-- 开箱即用的
-- `typescript` 的
+### 安装
+
+```shell
+pnpm i vite-plugin-watcher -D
+
+// 或者 npm i vite-plugin-watcher -D
+// 或者 yarn add vite-plugin-watcher -D
+```
+
+<br />
+
+### 配置
+
+接收一个回调函数，该函数第一个形参  `w` 为 `vite` 内部暴露出来的文件 `watcher`.  
+
+具体 `api` 可见 👉 [chokidar#api](https://github.com/paulmillr/chokidar#api)
+
+```ts
+// vite.config.js 或者 vite.config.ts
+
+import { defineConfig } from 'vite'
+import Watcher from 'vite-plugin-watcher'
+
+export default defineConfig({
+    plugins: [
+        Watcher(w => {
+           
+        })
+    ]
+})
+```
 
 <br />
 <br />
 
-## Usage 🦕
+## 例子
 
-### install
+### 监听目录下的文件添加
 
-```shell
-pnpm i
-```
+假设要监听 `src` 下 `foo` 目录和 `bar` 目录的文件添加。
 
-### test
+```ts
+import { defineConfig } from 'vite'
+import Watcher from 'vite-plugin-watcher'
 
-```shell
-pnpm test
-
-// or pnpm test:watch
-```
-
-### build
-
-```shell
-pnpm build
-```
-
-### coverage
-
-```shell
-pnpm coverage
-```
-
-### dev
-
-```shell
-pnpm dev
-```
-
-### publish
-
-```shell
-npm publish
-```
-
-### play
-
-```shell
-pnpm play
-
-// or pnpm play:open
-// or pnpm play:host
-// or pnpm play:build
-// or pnpm play:preview
-// or pnpm play:preview:open
-// or pnpm play:preview:host
-```
-
-### release
-
-```shell
-pnpm release
+export default defineConfig({
+    plugins: [
+        Watcher(w => {
+           // 添加文件进入监听器
+           w.add(['./src/demo', './src/foo'])
+           
+           // 监听文件添加
+           w.on('add', path => {
+               console.log(path) // 此时文件添加时将输出对应路径
+           })
+        })
+    ]
+})
 ```
 
 <br />
@@ -78,7 +77,7 @@ pnpm release
 
 ## License
 
-Made with name
+Made with markthree
 
 Published under [MIT License](./LICENSE).
 

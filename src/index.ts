@@ -1,13 +1,18 @@
-import { Plugin, normalizePath } from 'vite'
+import { Plugin, FSWatcher } from 'vite'
 import { createPluginName } from './shared/create'
 
-interface Options {}
+const useName = createPluginName(true)
 
-const useName = createPluginName()
+interface IUseWatcher {
+	(watcher: FSWatcher): void
+}
 
-const usePlugin = (options: Partial<Options>): Plugin => {
+const usePlugin = (useWatcher: IUseWatcher): Plugin => {
 	return {
-		name: useName('name')
+		name: useName('watcher'),
+		configureServer(server) {
+			useWatcher(server.watcher)
+		}
 	}
 }
 
